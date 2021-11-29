@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*- 
 import LINEPY
 from LINEPY import *
@@ -67,9 +66,9 @@ translatetw = []
 translatear = []
 
 myProfile = {
-	"displayName": "",
-	"statusMessage": "",
-	"pictureStatus": ""
+    "displayName": "",
+    "statusMessage": "",
+    "pictureStatus": ""
 }
 
 aditProfile = aditmadzs.getProfile()
@@ -199,7 +198,7 @@ def runtime(secs):
 def mentionMembers(to, mid):
     try:
         arrData = ""
-        textx = "Total Mention User「{}」\n\n  [ Mention ]\n1. ".format(str(len(mid)))
+        textx = "สมาชิกทั้งหมด {}\n  [ Mention ]\n1. ".format(str(len(mid)))
         arr = []
         no = 1
         num = 2
@@ -226,7 +225,7 @@ def mentionMembers(to, mid):
 def siderMembers(to, mid):
     try:
         arrData = ""
-        textx = "Total Sider User「{}」\nHaii ".format(str(len(mid)))
+        textx = "=> ".format(str(len(mid)))
         arr = []
         no = 1
         num = 2
@@ -253,7 +252,7 @@ def siderMembers(to, mid):
 def welcomeMembers(to, mid):
     try:
         arrData = ""
-        textx = "Total Member Masuk「{}」\nHaii  ".format(str(len(mid)))
+        textx = "ยินดีต้อนรับสมาชิกใหม่\n =>  ".format(str(len(mid)))
         arr = []
         no = 1
         num = 2
@@ -264,7 +263,7 @@ def welcomeMembers(to, mid):
             elen = str(len(textx) + len(mention) - 1)
             arrData = {'S':slen, 'E':elen, 'M':i}
             arr.append(arrData)
-            textx += mention+wait["welcome"]+"\nDi group "+str(ginfo.name)
+            textx += mention+wait["welcome"]+"\nกลุ่ม "+str(ginfo.name)
             if no < len(mid):
                 no += 1
                 textx += "%i " % (num)
@@ -281,7 +280,7 @@ def welcomeMembers(to, mid):
 def leaveMembers(to, mid):
     try:
         arrData = ""
-        textx = "Total Member Keluar「{}」\nByee  ".format(str(len(mid)))
+        textx = "มีสมาชิกออกกลุ่ม\nบายย  ".format(str(len(mid)))
         arr = []
         no = 1
         num = 2
@@ -292,7 +291,7 @@ def leaveMembers(to, mid):
             elen = str(len(textx) + len(mention) - 1)
             arrData = {'S':slen, 'E':elen, 'M':i}
             arr.append(arrData)
-            textx += mention+wait["leave"]+"\nDari group "+str(ginfo.name)
+            textx += mention+wait["leave"]+"\nกลุ่ม "+str(ginfo.name)
             if no < len(mid):
                 no += 1
                 textx += "%i " % (num)
@@ -339,7 +338,6 @@ def command(text):
     else:
         cmd = "command"
     return cmd
-    print (cmd)
     
 def help():
     key = Setmain["keyCommand"]
@@ -399,12 +397,12 @@ def bot(op):
                     if op.param2 not in Bots and op.param2 not in owner and op.param2 not in admin and op.param2 not in staff:
                         aditmadzs.acceptGroupInvitation(op.param1)
                         ginfo = aditmadzs.getGroup(op.param1)
-                        aditmadzs.sendMessage(op.param1,"Selamat Tinggal\n Group " +str(ginfo.name))
+                        aditmadzs.sendMessage(op.param1,"วัน\n Group " +str(ginfo.name))
                         aditmadzs.leaveGroup(op.param1)
                     else:
                         aditmadzs.acceptGroupInvitation(op.param1)
                         ginfo = aditmadzs.getGroup(op.param1)
-                        aditmadzs.sendMessage(op.param1,"Hai " + str(ginfo.name))
+                        aditmadzs.sendMessage(op.param1,"=> " + str(ginfo.name))
 
         if op.type == 13:
             if mid in op.param3:
@@ -412,11 +410,11 @@ def bot(op):
                     if op.param2 not in Bots and op.param2 not in owner and op.param2 not in admin and op.param2 not in staff:
                         aditmadzs.acceptGroupInvitation(op.param1)
                         ginfo = aditmadzs.getGroup(op.param1)
-                        aditmadzs.sendMessage(op.param1,"Haii, salken yaa ^^")
+                        aditmadzs.sendMessage(op.param1,"สวัสดีครับ, บอทมาแล้วครับ ^^")
                     else:
                         aditmadzs.acceptGroupInvitation(op.param1)
                         ginfo = aditmadzs.getGroup(op.param1)
-                        aditmadzs.sendMessage(op.param1,"Haii, salken yaa ^^")
+                        aditmadzs.sendMessage(op.param1,"สวัสดีครับ, บอทมาแล้วครับ^^")
             if Amid in op.param3:
                 if wait["autoJoin"] == True:
                     if op.param2 not in Bots and op.param2 not in owner and op.param2 not in admin and op.param2 not in staff:
@@ -478,7 +476,7 @@ def bot(op):
                     wait["blacklist"][op.param2] = True
                     try:
                         if op.param3 not in wait["blacklist"]:
-                        	ki.kickoutFromGroup(op.param1,[op.param2])
+                            ki.kickoutFromGroup(op.param1,[op.param2])
                     except:
                         pass
                 return
@@ -666,7 +664,7 @@ def bot(op):
                         siderMembers(op.param1, [op.param2])
                         contact = aditmadzs.getContact(op.param2)
                         image = "http://dl.profile.line-cdn.net/" + contact.pictureStatus
-                        aditmadzs.sendImageWithURL(op.param1, image)                        
+              #          aditmadzs.sendImageWithURL(op.param1, image)                        
                         
                     
         if op.type == 65:
@@ -780,7 +778,6 @@ def bot(op):
                         aditmadzs.sendImageWithURL(msg.to, image)
 #===========ADD BOT============#
                if msg.contentType == 13:
-                 if sender in admin or sender in owner or sender in creator:
                   if wait["addbots"] == True:
                     if msg.contentMetadata["mid"] in Bots:
                         aditmadzs.sendMessage(msg.to,"Contact itu sudah jadi anggota bot")
@@ -789,15 +786,15 @@ def bot(op):
                         Bots.append(msg.contentMetadata["mid"])
                         wait["addbots"] = True
                         aditmadzs.sendMessage(msg.to,"Berhasil menambahkan ke anggota bot")
-                 if wait["dellbots"] == True:
+                        
+                  if wait["dellbots"] == True:
                     if msg.contentMetadata["mid"] in Bots:
                         Bots.remove(msg.contentMetadata["mid"])
                         aditmadzs.sendMessage(msg.to,"")
                     else:
                         wait["dellbots"] = True
                         aditmadzs.sendMessage(msg.to,"Contact itu bukan anggota Aditmadzs BOT")
-#===========ADD STAFF============#
-                 if sender in admin or sender in owner or sender in creator:
+#===========ADD STAFF=========
                   if wait["addstaff"] == True:
                     if msg.contentMetadata["mid"] in staff:
                         aditmadzs.sendMessage(msg.to,"Contact itu sudah jadi staff")
@@ -806,41 +803,40 @@ def bot(op):
                         staff.append(msg.contentMetadata["mid"])
                         wait["addstaff"] = True
                         aditmadzs.sendMessage(msg.to,"Berhasil menambahkan ke staff")
-                 if wait["dellstaff"] == True:
+                  if wait["dellstaff"] == True:
                     if msg.contentMetadata["mid"] in staff:
                         staff.remove(msg.contentMetadata["mid"])
-                        aditmadzs.sendMessage(msg.to,"Berhasil menghapus dari staff")
+                        aditmadzs.sendMessage(msg.to,"ลบ สต๊าฟแล้ว")
                         wait["dellstaff"] = True
                     else:
                         wait["dellstaff"] = True
-                        aditmadzs.sendMessage(msg.to,"Contact itu bukan staff")
+                        aditmadzs.sendMessage(msg.to,"ไม่มีข้อมูลนี้")
 #===========ADD ADMIN============#
-                 if sender in admin or sender in owner or sender in creator:
                   if wait["addadmin"] == True:
                     if msg.contentMetadata["mid"] in admin:
-                        aditmadzs.sendMessage(msg.to,"Contact itu sudah jadi admin")
+                        aditmadzs.sendMessage(msg.to,"ไม่มีข้อมูลนี้")
                         wait["addadmin"] = True
                     else:
                         admin.append(msg.contentMetadata["mid"])
                         wait["addadmin"] = True
-                        aditmadzs.sendMessage(msg.to,"Berhasil menambahkan ke admin")
-                 if wait["delladmin"] == True:
+                        aditmadzs.sendMessage(msg.to,"เพิ่มแอดมินสำเร็จ")
+                  if wait["delladmin"] == True:
                     if msg.contentMetadata["mid"] in admin:
                         admin.remove(msg.contentMetadata["mid"])
-                        aditmadzs.sendMessage(msg.to,"Berhasil menghapus dari admin")
+                        aditmadzs.sendMessage(msg.to,"ลบแอดมินสำเร็จ")
                     else:
                         wait["delladmin"] = True
                         aditmadzs.sendMessage(msg.to,"")
-#===========ADD BLACKLIST============#
-                 if sender in admin or sender in owner or sender in creator:
+#========ADD BLACKLIST=========#
+            
                   if wait["wblacklist"] == True:
                     if msg.contentMetadata["mid"] in wait["blacklist"]:
-                        aditmadzs.sendMessage(msg.to,"Contact itu sudah ada di blacklist")
+                        aditmadzs.sendMessage(msg.to,"มีข้อมูลในแบ็คลิส")
                         wait["wblacklist"] = True
                     else:
                         wait["blacklist"][msg.contentMetadata["mid"]] = True
                         wait["wblacklist"] = True
-                        aditmadzs.sendMessage(msg.to,"Berhasil menambahkan ke blacklist user")
+                        aditmadzs.sendMessage(msg.to,"เพิ่มลงในแบล็คลิสแล้ว")
                   if wait["dblacklist"] == True:
                     if msg.contentMetadata["mid"] in wait["blacklist"]:
                         del wait["blacklist"][msg.contentMetadata["mid"]]
@@ -848,8 +844,7 @@ def bot(op):
                     else:
                         wait["dblacklist"] = True
                         aditmadzs.sendMessage(msg.to,"Contact itu tidak ada di blacklist")
-#===========TALKBAN============#
-                 if sender in admin or sender in owner or sender in creator:
+#===========TALKBAN============
                   if wait["Talkwblacklist"] == True:
                     if msg.contentMetadata["mid"] in wait["Talkblacklist"]:
                         aditmadzs.sendMessage(msg.to,"Contact itu sudah ada di Talkban")
@@ -867,177 +862,194 @@ def bot(op):
                         aditmadzs.sendMessage(msg.to,"Contact itu tidak ada di Talkban")
 #===========UPDATE FOTO============#
                if msg.contentType == 1:
-                 if sender in admin or sender in owner or sender in creator:
-                    if Setmain["Addimage"] == True:
+                  if  Setmain["Addimage"] == True:
                         msgid = msg.id
-                        fotoo = "https://obs.line-apps.com/talk/m/download.nhn?oid="+msgid
+                        fotoo = "https://obs.line -apps.com/talk/m/download.nhn?oid="+msgid
                         headers = aditmadzs.Talk.Headers
                         r = requests.get(fotoo, headers=headers, stream=True)
                         if r.status_code == 200:
                             path = os.path.join(os.path.dirname(__file__), 'dataPhotos/%s.jpg' % Setmain["Img"])
                             with open(path, 'wb') as fp:
                                 shutil.copyfileobj(r.raw, fp)
-                            aditmadzs.sendMessage(msg.to, "Berhasil menambahkan gambar")
+                            aditmadzs.sendMessage(msg.to, "success")
                         Setmain["Img"] = {}
                         Setmain["Addimage"] = False
 
                if msg.toType == 2:
-                 if sender in admin or sender in owner or sender in creator:
-                   if settings["groupPicture"] == True:
+                  if settings["groupPicture"] == True:
                      path = aditmadzs.downloadObjectMsg(msg_id)
                      settings["groupPicture"] = False
                      aditmadzs.updateGroupPicture(msg.to, path)
-                     aditmadzs.sendMessage(msg.to, "Berhasil mengubah foto group")
+                     aditmadzs.sendMessage(msg.to, "success")
 
                if msg.contentType == 1:
-                   if sender in admin or sender in owner or sender in creator:
-                       if mid in Setmain["ADITMADZSfoto"]:
+                  if mid in Setmain["ADITMADZSfoto"]:
                             path = aditmadzs.downloadObjectMsg(msg_id)
                             del Setmain["ADITMADZSfoto"][mid]
                             aditmadzs.updateProfilePicture(path)
-                            aditmadzs.sendMessage(msg.to,"Foto berhasil dirubah")
+                            aditmadzs.sendMessage(msg.to,"ok")
 
                if msg.contentType == 1:
-                 if sender in admin or sender in owner or sender in creator:
-                        if Amid in Setmain["ADITMADZSfoto"]:
+                  if Amid in Setmain["ADITMADZSfoto"]:
                             path = ki.downloadObjectMsg(msg_id)
                             del Setmain["ADITMADZSfoto"][Amid]
                             ki.updateProfilePicture(path)
                             ki.sendMessage(msg.to,"Foto berhasil dirubah")
 
                if msg.contentType == 1:
-                 if sender in admin or sender in owner or sender in creator:
-                   if settings["changePicture"] == True:
+                  if settings["changePicture"] == True:
                      path1 = ki.downloadObjectMsg(msg_id)
                      settings["changePicture"] = False
                      ki.updateProfilePicture(path1)
-                     ki.sendMessage(msg.to, "Berhasil mengubah foto profile bot")               
+                     ki.sendMessage(msg.to, "bot ok")               
 
                if msg.contentType == 0:
-                    if Setmain["autoRead"] == True:
+                  if Setmain["autoRead"] == True:
                         aditmadzs.sendChatChecked(msg.to, msg_id)
-                    if text is None:
+                        
+               if text is None:
                         return
-                    else:
+               else:
                         cmd = command(text)
-                        if cmd == "คำสั่ง":
-                          if wait["selfbot"] == True:
+                        
+               if cmd == "help":
+                  if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                helpMessage = help()
                                aditmadzs.sendMessage(msg.to, str(helpMessage))
-                                                                                       
-                        if cmd == "แชลบอท":
-                            if sender in admin or sender in owner or sender in creator:
+                            else: aditmadzs.sendMessage(msg.to, "คุนไม่มีสิทธิ์สั่ง")
+                                                  
+               if cmd == "แชลบอท":
+                   if sender in admin or sender in owner or sender in creator:
                                 wait["selfbot"] = True
                                 aditmadzs.sendMessage(msg.to, "Selfbot diaktifkan")
                                 
-                        elif cmd == "ปิดแชลบอท":
+               elif cmd == "คำสั่ง":
+                            if sender in admin or sender in owner or sender in creator:
+                                wait["selfbot"] = True
+                            aditmadzs.sendImageWithURL(mgs.to, 'https://www.img.in.th/images/41619e7c8a18be5aa47a5e4420f448d6.jpg')     
+                
+               elif cmd == "ฟอร์ด": 
+                   if sender in admin:          
+                       wait["selfbot"] = True           
+                       aditmadzs.sendMessage(msg.to, "5070999796\n กรุงไทย\n Ford")
+                        
+                        
+               elif cmd == "ปิดแชลบอท":
                             if sender in owner:
                                 wait["selfbot"] = False
-                                aditmadzs.sendMessage(msg.to, "Selfbot dinonaktifkan")
+                                aditmadzs.sendMessage(msg.to, "Success")
                                             
-                        elif cmd == "คำสั่งบอท":
+               elif cmd == "คำสั่งบอท":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                helpMessage1 = helpbot()
                                aditmadzs.sendMessage(msg.to, str(helpMessage1))
                                
-                        elif cmd == "meme":
+               elif cmd == "คำสั่ง2":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                helpMessage2 = infomeme()
                                aditmadzs.sendMessage(msg.to, str(helpMessage2))
-                               
+                            
+                            
+                            else: aditmadzs.sendMessage(msg.to, "คุนไม่มีสิทธิ์สั่ง")   
     
-                        elif cmd == "ผู้สร้าง" or text.lower() == 'creator':
+               elif cmd == "ผู้สร้าง" or text.lower() == 'ผส':
                             if sender in admin or sender in owner or sender in creator:
-                                aditmadzs.sendMessage(msg.to,"Creator Bot") 
+                                aditmadzs.sendMessage(msg.to,"คนทำบอท") 
                                 ma = ""
                                 for i in creator:
                                     ma = aditmadzs.getContact(i)
                                     aditmadzs.sendMessage(msg.to, None, contentMetadata={'mid': i}, contentType=13)
+                            
+                            else: aditmadzs.sendMessage(msg.to, "คุนไม่มีสิทธิ์สั่ง")         
+                                    
 
-                        elif cmd == "about" or cmd == "informasi":
+               elif cmd == "about" or cmd == "informasi":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                sendMention(msg.to, sender, "「 ◄]·❍✯͜͡⊰์◉⊱τ∉∂m d®∂ⓖ๏n ❂Ғ w∂®®¡๏®⊰์◉⊱™️✯͜͡❂➣ SelfBOT 1 Assist 」\n")
                                aditmadzs.sendMessage(msg.to, None, contentMetadata={'mid': mid}, contentType=13)
 
-                        elif cmd == "ฉัน" or text.lower() == 'ฉัน':
-                          if wait["selfbot"] == True:
-                            if sender in owner:
+               elif cmd == "ฉัน" or text.lower() == 'ฉัน':
+                   if wait["selfbot"] == True:
+                          if sender in owner:
                                msg.contentType = 13
                                msg.contentMetadata = {'mid': msg._from}
                                aditmadzs.sendMessage1(msg)
 
-                        elif text.lower() == "มิดฉัน":
-                            if sender in owner:
+               elif text.lower() == "มิดฉัน":
+                    if sender in admin:
                                aditmadzs.sendMessage(msg.to, msg._from)
 
-                        elif ("Mid " in msg.text):
-                          if wait["selfbot"] == True:
-                            if sender in admin or sender in owner or sender in creator:
+               elif ("มิด " in msg.text):
+                    if wait["selfbot"] == True:
+                          if sender in admin or sender in owner or sender in creator:
                                key = eval(msg.contentMetadata["MENTION"])
                                key1 = key["MENTIONEES"][0]["M"]
                                mi = aditmadzs.getContact(key1)
                                aditmadzs.sendMessage(msg.to, "sender : "+str(mi.displayName)+"\nMID : " +key1)
                                aditmadzs.sendMessage(msg.to, None, contentMetadata={'mid': key1}, contentType=13)
+                                 
+                          else: aditmadzs.sendMessage(msg.to, "คุนไม่มีสิทธิ์สั่ง")
 
-                        elif ("Info " in msg.text):
-                          if wait["selfbot"] == True:
-                            if sender in admin or sender in owner or sender in creator:
+               elif ("Info " in msg.text):
+                    if wait["selfbot"] == True:
+                          if sender in admin or sender in owner or sender in creator:
                                key = eval(msg.contentMetadata["MENTION"])
                                key1 = key["MENTIONEES"][0]["M"]
                                mi = aditmadzs.getContact(key1)
                                aditmadzs.sendMessage(msg.to, "❧ Nama : "+str(mi.displayName)+"\n🐚 Mid : " +key1+"\n🐚 Status : "+str(mi.statusMessage))
                                aditmadzs.sendMessage(msg.to, None, contentMetadata={'mid': key1}, contentType=13)
                                if "videoProfile='{" in str(aditmadzs.getContact(key1)):
-                                   aditmadzs.sendVideoWithURL(msg.to, 'http://dl.profile.line.naver.jp'+str(mi.picturePath)+'/vp.small')
-                               else:
-                                   aditmadzs.sendImageWithURL(msg.to, 'http://dl.profile.line.naver.jp'+str(mi.picturePath))
+                                   aditmadzs.sendVideoWithURL(msg.to, 'http://dl.profile.line.naver.jp'+str(mi.picturePath)+'/vp.small')   
+                          else:                              aditmadzs.sendImageWithURL(msg.to, 'http://dl.profile.line.naver.jp'+str(mi.picturePath))
 
-                        elif cmd == "บอท":
-                          if wait["selfbot"] == True:
-                            if sender in admin or sender in owner or sender in creator:
+               elif cmd == "บอท":
+                    if wait["selfbot"] == True:
+                          if sender in admin or sender in owner or sender in creator:
                                msg.contentType = 13
                                msg.contentMetadata = {'mid': mid}
                                aditmadzs.sendMessage1(msg)
                                msg.contentType = 13
                                msg.contentMetadata = {'mid': Amid}
                                aditmadzs.sendMessage1(msg)
+                            
+                          else: aditmadzs.sendMessage(msg.to, "คุนไม่มีสิทธิ์สั่ง")
 
-                        elif text.lower() == "ลบแชท":
-                          if wait["selfbot"] == True:
-                            if sender in owner:
+               elif text.lower() == "ลบแชท":
+                     if wait["selfbot"] == True:
+                         if sender in owner:
                                try:
                                    aditmadzs.removeAllMessages(op.param2)
                                except:
                                    pass
 
-                        elif text.lower() == "ลบ":
-                          if wait["selfbot"] == True:
-                            if sender in owner:
+               elif text.lower() == "ลบ":
+                     if wait["selfbot"] == True:
+                           if sender in owner:
                                try:
                                    ki.removeAllMessages(op.param2)
-                                   aditmadzs.sendMessage(msg.to,"Chat dibersihkan...")
+                                   aditmadzs.sendMessage(msg.to,"success.")
                                except:
                                    pass
 
-                        elif cmd.startswith("broadcast: "):
+               elif cmd.startswith("ben: "):
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                sep = text.split(" ")
                                pesan = text.replace(sep[0] + " ","")
                                saya = aditmadzs.getGroupIdsJoined()
                                for group in saya:
-                                   aditmadzs.sendMessage(group,"=======[BROADCAST]=======\n\n"+pesan+"\n\nCreator : line.me/ti/p/~mostarz\n\nChannel Youtube : https://youtu.be/cmVxZyKCrxE")
+                                   aditmadzs.sendMessage(group,"=====[ B E N ]====\n"+pesan+"\n รับติดตั้งบอท")
 
-                        elif text.lower() == "mykey":
+               elif text.lower() == "mykey":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                aditmadzs.sendMessage(msg.to, "「Mykey」\nSetkey bot mu「 " + str(Setmain["keyCommand"]) + " 」")
                                
-                        elif cmd.startswith("setkey "):
+               elif cmd.startswith("setkey "):
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                sep = text.split(" ")
@@ -1048,27 +1060,27 @@ def bot(op):
                                    Setmain["keyCommand"] = str(key).lower()
                                    aditmadzs.sendMessage(msg.to, "「Setkey」\nSetkey diganti jadi「{}」".format(str(key).lower()))
 
-                        elif text.lower() == "resetkey":
+               elif text.lower() == "resetkey":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                Setmain["keyCommand"] = ""
                                aditmadzs.sendMessage(msg.to, "「Setkey」\nSetkey mu kembali ke awal")
 
-                        elif cmd == "restart":
+               elif cmd == "รีสตาร์ท":
                           if wait["selfbot"] == True:
-                            if msg._from in creator:
-                               aditmadzs.sendMessage(msg.to, "Restart Sukses Bos!...")
+                            if sender in creator:
+                               aditmadzs.sendMessage(msg.to, "รีสตาร์ทบอทแล้ว")
                                Setmain["restartPoint"] = msg.to
                                restartBot()
                             
-                        elif cmd == "runtime":
+               elif cmd == "บอทรัน":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                eltime = time.time() - mulai
                                bot = "Aktif " +waktu(eltime)
                                aditmadzs.sendMessage(msg.to,bot)
                             
-                        elif cmd == "ginfo":
+               elif cmd == "ginfo":
                           if sender in admin or sender in owner or sender in creator:
                             try:
                                 G = aditmadzs.getGroup(msg.to)
@@ -1090,7 +1102,7 @@ def bot(op):
                             except Exception as e:
                                 aditmadzs.sendMessage(msg.to, str(e))
 
-                        elif cmd.startswith("infogrup "):
+               elif cmd.startswith("infogrup "):
                           if sender in admin or sender in owner or sender in creator:
                             separate = text.split(" ")
                             number = text.replace(separate[0] + " ","")
@@ -1129,7 +1141,7 @@ def bot(op):
                             except:
                                 pass
 
-                        elif cmd.startswith("infomem "):
+               elif cmd.startswith("infomem "):
                           if sender in admin or sender in owner or sender in creator:
                             separate = msg.text.split(" ")
                             number = msg.text.replace(separate[0] + " ","")
@@ -1147,7 +1159,7 @@ def bot(op):
                             except: 
                                 pass
 
-                        elif cmd.startswith("leave: "):
+               elif cmd.startswith("leave: "):
                           if sender in admin or sender in owner or sender in creator:
                             separate = msg.text.split(" ")
                             number = msg.text.replace(separate[0] + " ","")
@@ -1159,7 +1171,7 @@ def bot(op):
                                     ki.leaveGroup(i)
                                     aditmadzs.sendMessage(msg.to,"Berhasil keluar di grup " +str(ginfo.name))
 
-                        elif cmd == "fiendlist":
+               elif cmd == "fiendlist":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                ma = ""
@@ -1172,7 +1184,7 @@ def bot(op):
                                    ma += "┃┃ " + str(a) + ". " +G.displayName+ "\n"
                                aditmadzs.sendMessage(msg.to,"┏━━[ FRIEND LIST ]\n┃┃\n"+ma+"┃┃\n┗━━[ Total「"+str(len(gid))+"」Friends ]")
 
-                        elif cmd == "gruplist":
+               elif cmd == "gruplist":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                ma = ""
@@ -1185,7 +1197,7 @@ def bot(op):
                                    ma += "┃┃ " + str(a) + ". " +G.name+ "\n"
                                aditmadzs.sendMessage(msg.to,"┏━━[ GROUP LIST ]\n┃┃\n"+ma+"┃┃\n┗━━[ Total「"+str(len(gid))+"」Groups ]")
 
-                        elif cmd == "gruplist1":
+               elif cmd == "gruplist1":
                             if sender in admin or sender in owner or sender in creator:
                                ma = ""
                                a = 0
@@ -1198,25 +1210,25 @@ def bot(op):
                                ki.sendMessage(msg.to,"┏━━[ GROUP LIST ]\n┃┃\n"+ma+"┃┃\n┗━━[ Total「"+str(len(gid))+"」Groups ]")
 
 
-                        elif cmd == "open":
+               elif cmd == "เปิดลิ้ง":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                 if msg.toType == 2:
                                    X = ki.getGroup(msg.to)
                                    X.preventedJoinByTicket = False
                                    ki.updateGroup(X)
-                                   ki.sendMessage(msg.to, "Url Opened")
+                                   ki.sendMessage(msg.to, "เปิดลิ้งกลุ่มเรียบร้อย")
 
-                        elif cmd == "close":
+               elif cmd == "ปิดลิ้ง":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                 if msg.toType == 2:
                                    X = ki.getGroup(msg.to)
                                    X.preventedJoinByTicket = True
                                    ki.updateGroup(X)
-                                   ki.sendMessage(msg.to, "Url Closed")
+                                   ki.sendMessage(msg.to, "ปิดลิ้งกลุ่มเรียบร้อย")
 
-                        elif cmd == "url grup":
+               elif cmd == "ลิ้ง":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                 if msg.toType == 2:
@@ -1225,10 +1237,10 @@ def bot(op):
                                       x.preventedJoinByTicket = False
                                       ki.updateGroup(x)
                                    gurl = ki.reissueGroupTicket(msg.to)
-                                   ki.sendMessage(msg.to, "Nama : "+str(x.name)+ "\nUrl grup : http://line.me/R/ti/g/"+gurl)
+                                   ki.sendMessage(msg.to, "ชื่อ : "+str(x.name)+ "\nUrl grup : http://line.me/R/ti/g/"+gurl)
                                    
                                    
-                        elif cmd == "reject":
+               elif cmd == "reject":
                           if wait["selfbot"] == True:
                             if msg._from in creator:
                               ginvited = aditmadzs.getGroupIdsInvited()
@@ -1240,33 +1252,33 @@ def bot(op):
                                   aditmadzs.sendMessage(to, "Tidak ada undangan yang tertunda")
 
 #===========BOT UPDATE============#
-                        elif cmd == "เปลี่ยนรูปกลุ่ม":
+               elif cmd == "เปลี่ยนรูปกลุ่ม":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                               if msg.toType == 2:
                                 settings["groupPicture"] = True
-                                aditmadzs.sendMessage(msg.to,"Kirim fotonya.....")   
+                                aditmadzs.sendMessage(msg.to,"ส่งรูปมา")   
                             else: aditmadzs.sendMessage(msg.to, sender)
 
-                        elif cmd == "เปลี่ยนรูปบอท":
+               elif cmd == "เปลี่ยนรูปบอท":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                 settings["changePicture"] = True
-                                ki.sendMessage(msg.to,"Kirim fotonya.....")
+                                ki.sendMessage(msg.to,"ส่งรูปมา....")
                                 
-                        elif cmd == "เปลี่ยนรูปบอท1":
+               elif cmd == "เปลี่ยนรูปบอท1":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                 Setmain["ADITMADZSfoto"][mid] = True
-                                aditmadzs.sendMessage(msg.to,"Kirim fotonya.....")
+                                aditmadzs.sendMessage(msg.to,"ส่งรูปมา....")
                                 
-                        elif cmd == "bot1up":
+               elif cmd == "อัพบอท1":
                             if sender in admin or sender in owner or sender in creator:
                                 Setmain["ADITMADZSfoto"][Amid] = True
-                                ki.sendMessage(msg.to,"Kirim fotonya.....")
+                                ki.sendMessage(msg.to,"ส่งรูปมา....")
                                
 
-                        elif cmd.startswith("ชื่อ: "):
+               elif cmd.startswith("ชื่อ: "):
                           if sender in admin or sender in owner or sender in creator:
                             separate = msg.text.split(" ")
                             string = msg.text.replace(separate[0] + " ","")
@@ -1274,9 +1286,9 @@ def bot(op):
                                 profile = aditmadzs.getProfile()
                                 profile.displayName = string
                                 aditmadzs.updateProfile(profile)
-                                aditmadzs.sendMessage(msg.to,"Nama diganti jadi " + string + "")
+                                aditmadzs.sendMessage(msg.to,"เปลี่ยนชื่อแล้ว " + string + "")
 
-                        elif cmd.startswith("ชื่อบอท: "):
+               elif cmd.startswith("ชื่อบอท: "):
                           if sender in admin or sender in owner or sender in creator:
                             separate = msg.text.split(" ")
                             string = msg.text.replace(separate[0] + " ","")
@@ -1284,10 +1296,10 @@ def bot(op):
                                 profile = ki.getProfile()
                                 profile.displayName = string
                                 ki.updateProfile(profile)
-                                ki.sendMessage(msg.to,"Nama diganti jadi " + string + "")
+                                ki.sendMessage(msg.to,"ผิดพลาด " + string + "")
 
 #===========BOT UPDATE============#
-                        elif cmd == "แทค" or text.lower() == '😆':
+               elif cmd == "แทค" or text.lower() == '😆':
                           if wait["selfbot"] == True:
                                group = aditmadzs.getGroup(msg.to)
                                nama = [contact.mid for contact in group.members]
@@ -1341,7 +1353,7 @@ def bot(op):
                                        nm5 += [nama[m]]
                                    mentionMembers(msg.to, nm4)
 
-                        elif cmd == "ลิสบอท":
+               elif cmd == "ลิสบอท":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                 ma = ""
@@ -1352,7 +1364,7 @@ def bot(op):
                                     ma += str(a) + ". " +aditmadzs.getContact(m_id).displayName + "\n"
                                 aditmadzs.sendMessage(msg.to,"⏩ BOT\n\n"+ma+"\nรวม「%s บอทT" %(str(len(Bots))))
 
-                        elif cmd == "ลิสแอดมิน":
+               elif cmd == "ลิสแอดมิน":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                 ma = ""
@@ -1375,7 +1387,7 @@ def bot(op):
                                     mc += str(c) + ". " +aditmadzs.getContact(m_id).displayName + "\n"
                                 aditmadzs.sendMessage(msg.to,"BEN\n\nผู้สร้าง:\n"+ma+"\nแอดมิน:\n"+mb+"\nสต๊าฟ:\n"+mc+"\nรวม %s」" %(str(len(owner)+len(admin)+len(staff))))
 
-                        elif cmd == "listprotect":
+               elif cmd == "listprotect":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                 ma = ""
@@ -1415,12 +1427,12 @@ def bot(op):
                                     me += str(e) + ". " +aditmadzs.getGroup(group).name + "\n"                                    
                                 aditmadzs.sendMessage(msg.to,"⏩ BOT Protection\n\n⏩ PROTECT URL :\n"+ma+"\n⏩ PROTECT KICK :\n"+mb+"\n⏩ PROTECT JOIN :\n"+md+"\n⏩ PROTECT CANCEL:\n"+mc+"\n⏩ PROTECT INVITE :\n"+me+"\nTotal「%s」Protect yang aktif" %(str(len(protectqr)+len(protectkick)+len(protectjoin)+len(protectcancel)+len(protectinvite))))
 
-                        elif cmd == "ตอบกลับ":
+               elif cmd == "ตอบกลับ":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                 ki.sendMessage(msg.to,responsename1)
 
-                        elif cmd == "/บอท":
+               elif cmd == "/บอท":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                 try:
@@ -1431,7 +1443,7 @@ def bot(op):
                                     pass
                                 
     
-                        elif cmd == "/บอท1":
+               elif cmd == "/บอท1":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                 G = aditmadzs.getGroup(msg.to)
@@ -1445,7 +1457,7 @@ def bot(op):
                                 G.preventedJoinByTicket = True
                                 ki.updateGroup(G)
 
-                        elif cmd == "/ไป":
+               elif cmd == "/ไป":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                 G = aditmadzs.getGroup(msg.to)
@@ -1453,7 +1465,7 @@ def bot(op):
                                 ki.leaveGroup(msg.to)
                                 
 
-                        elif cmd.startswith("leave "):
+               elif cmd.startswith("leave "):
                             if sender in admin or sender in owner or sender in creator:
                                 proses = text.split(" ")
                                 ng = text.replace(proses[0] + " ","")
@@ -1465,7 +1477,7 @@ def bot(op):
                                         ki.leaveGroup(i)
                                         aditmadzs.sendMessage(to,"Berhasil keluar dari grup " +h)
 
-                        elif cmd == "/มา":
+               elif cmd == "/มา":
                             if sender in admin or sender in owner or sender in creator:
                                 G = aditmadzs.getGroup(msg.to)
                                 ginfo = aditmadzs.getGroup(msg.to)
@@ -1480,7 +1492,7 @@ def bot(op):
                             else: aditmadzs.sendMessage(msg.to, sender)
 
 
-                        elif cmd == "เทส":
+               elif cmd == "เทส":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                 get_profile_time_start = time.time()
@@ -1492,25 +1504,25 @@ def bot(op):
                                 get_contact_time_start = time.time()
                                 get_contact = aditmadzs.getContact(mid)
                                 get_contact_time = time.time() - get_contact_time_start
-                                aditmadzs.sendMessage(msg.to, "ความเร็วตอบกลับ\n\n - ดึงโปรไฟล์\n   %.10f\n - ดึงคอนแทค\n   %.10f\n - กลุ่ม\n   %.10f" % (get_profile_time/3,get_contact_time/3,get_group_time/3))
-                            else: aditmadzs.sendMessage(msg.to, sender)
+                                aditmadzs.sendMessage(msg.to, "ความเร็วตอบกลับ\n\n - ดึงโปรไฟล์\n   %.10f\n - ดึงคอนแทค\n   %.10f\n - ตอบกลับกลุ่ม\n   %.10f" % (get_profile_time/3,get_contact_time/3,get_group_time/3))
+                            else: aditmadzs.sendMessage(msg.to, "คุณไม่มีสิทธิ")
 
-                        elif cmd == "สปีด" or cmd == "sp":
+               elif cmd == "สปีด" or cmd == "sp":
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                start = time.time()
-                               aditmadzs.sendMessage(msg.to, "Progres speed...")
+                               aditmadzs.sendMessage(msg.to, "สปีด....")
                                elapsed_time = time.time() - start
-                               aditmadzs.sendMessage(msg.to, "{} detik".format(str(elapsed_time)))
+                               aditmadzs.sendMessage(msg.to, "{} วินาที".format(str(elapsed_time)))
                             else: aditmadzs.sendMessage(msg.to, sender)
 
-                        elif cmd == "อ่าน":
+               elif cmd == "อ่าน":
                           if wait["selfbot"] == True:
                            if sender in admin or sender in owner or sender in creator:
                               try:
                                   tz = pytz.timezone("Asia/Jakarta")
                                   timeNow = datetime.now(tz=tz)
-                                  aditmadzs.sendMessage(msg.to, "Cek sider diaktifkan\n\nTanggal : "+ datetime.strftime(timeNow,'%Y-%m-%d')+"\nJam [ "+ datetime.strftime(timeNow,'%H:%M:%S')+" ]")
+                                  aditmadzs.sendMessage(msg.to, "ระบบจับสมาชิกอ่าน\nวัน : "+ datetime.strftime(timeNow,'%Y-%m-%d')+"\nเวลา  [ "+ datetime.strftime(timeNow,'%H:%M:%S')+" ]")
                                   del cctv['point'][msg.to]
                                   del cctv['sidermem'][msg.to]
                                   del cctv['cyduk'][msg.to]
@@ -1521,19 +1533,19 @@ def bot(op):
                               cctv['cyduk'][msg.to]=True
                            else: aditmadzs.sendMessage(msg.to, sender)
 
-                        elif cmd == "ปิดอ่าน":
+               elif cmd == "ปิดอ่าน":
                           if wait["selfbot"] == True:
                            if sender in admin or sender in owner or sender in creator:
                               if msg.to in cctv['point']:
                                   tz = pytz.timezone("Asia/Jakarta")
                                   timeNow = datetime.now(tz=tz)
                                   cctv['cyduk'][msg.to]=False
-                                  aditmadzs.sendMessage(msg.to, "Cek sider dinonaktifkan\n\nTanggal : "+ datetime.strftime(timeNow,'%Y-%m-%d')+"\nJam [ "+ datetime.strftime(timeNow,'%H:%M:%S')+" ]")
+                                  aditmadzs.sendMessage(msg.to, "ปิดจับอ่าน \nวัน : "+ datetime.strftime(timeNow,'%Y-%m-%d')+"\nเวลา [ "+ datetime.strftime(timeNow,'%H:%M:%S')+" ]")
                               else:
                                   aditmadzs.sendMessage(msg.to, "Sudak tidak aktif")
 
 #===========Hiburan============#
-                        elif cmd.startswith("profilesmule: "):
+               elif cmd.startswith("profilesmule: "):
                           if sender in admin or sender in owner or sender in creator:    
                             try:
                                 separate = msg.text.split(" ")
@@ -1546,16 +1558,16 @@ def bot(op):
                                 aditmadzs.sendImageWithURL(msg.to, ss)
                             except Exception as error:
                                 pass                                
-                            	
-                            	
-                        elif cmd.startswith("meme"):
+                                
+                                
+               elif cmd.startswith("meme"):
                           if sender in admin or sender in owner or sender in creator:    
                             txt = msg.text.split("@")
                             image = ("http://memegen.link/"+txt[1].replace(" ","_")+"/"+txt[2].replace(" ","_")+"/"+txt[3].replace(" ","_")+".jpg?watermark=none")
                             aditmadzs.sendImageWithURL(msg.to, image)
           
 
-                        elif cmd.startswith("ytmp4: "):
+               elif cmd.startswith("ytmp4: "):
                           if sender in admin or sender in owner or sender in creator:
                             try:
                                 sep = msg.text.split(" ")
@@ -1589,16 +1601,16 @@ def bot(op):
                             except Exception as e:
                                 aditmadzs.sendMessage(msg.to,str(e))
 
-                        elif cmd.startswith("แทค: "):
+               elif cmd.startswith("แทค: "):
                           if wait["selfbot"] == True:
                            if sender in admin or sender in owner or sender in creator:
                                 proses = text.split(":")
                                 strnum = text.replace(proses[0] + ":","")
                                 num =  int(strnum)
                                 Setmain["ADITMADZSlimit"] = num
-                                aditmadzs.sendMessage(msg.to,"Total Spamtag Diubah Menjadi " +strnum)
+                                aditmadzs.sendMessage(msg.to,"ตั้งแทคเรียบร้อย " +strnum)
 
-                        elif cmd.startswith("แทค "):
+               elif cmd.startswith("แทค "):
                           if wait["selfbot"] == True:
                            if sender in admin or sender in owner or sender in creator:
                                 if 'MENTION' in msg.contentMetadata.keys()!=None:
@@ -1627,7 +1639,7 @@ def bot(op):
                                     else:
                                         aditmadzs.sendMessage(msg.to,"Jumlah melebihi 1000")
                                   
-                        elif 'โทเค็น' in msg.text:
+               elif 'โทเค็น' in msg.text:
                           if wait["selfbot"] == True:
                            if msg._from in creator:
                                aditmadzs.sendMessage(msg.to,"Aditmadzs\n"+aditmadzs.authToken)
@@ -1636,8 +1648,7 @@ def bot(op):
 #=================================
                                  
 
-                        elif 'ต้อนรับ ' in msg.text:
-                           if sender in admin or sender in owner or sender in creator:
+               elif cmd == 'ต้อนรับ ' in msg.text and sender in admin or sender in owner or sender in creator:
                               spl = msg.text.replace('ต้อนรับ ','')
                               if spl == 'on':
                                   if msg.to in welcome:
@@ -1645,21 +1656,20 @@ def bot(op):
                                   else:
                                        welcome.append(msg.to)
                                        ginfo = aditmadzs.getGroup(msg.to)
-                                       msgs = "Welcome Msg diaktifkan\nDi Group : " +str(ginfo.name)
-                                  aditmadzs.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
+                                       msgs = "อ่านกฎกลุ่ม ด้วยนะครับ by แอดมิน\n กลุ่ม: " +str(ginfo.name)
+                                  aditmadzs.sendMessage(msg.to, "「Bot => Ben」\n" + msgs)
                               elif spl == 'off':
                                     if msg.to in welcome:
                                          welcome.remove(msg.to)
                                          ginfo = aditmadzs.getGroup(msg.to)
-                                         msgs = "Welcome Msg dinonaktifkan\nDi Group : " +str(ginfo.name)
+                                         msgs = "ปิด => ต้อนรับ \nกลุ่ม : " +str(ginfo.name)
                                     else:
                                          msgs = "Welcome Msg sudah tidak aktif"
-                                    aditmadzs.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
+                                    aditmadzs.sendMessage(msg.to, "「Bot By Ben」\n" + msgs)
                                     
 #===========Protection============#                                    
-
-                        elif 'กันลิ้ง ' in msg.text:
-                           if sender in admin or sender in owner or sender in creator:
+ 
+               elif 'กันลิ้ง ' in msg.text and sender in admin or sender in owner or sender in creator:
                               spl = msg.text.replace('กันลิ้ง ','')
                               if spl == 'on':
                                   if msg.to in protectqr:
@@ -1667,19 +1677,18 @@ def bot(op):
                                   else:
                                        protectqr.append(msg.to)
                                        ginfo = aditmadzs.getGroup(msg.to)
-                                       msgs = "Protect url diaktifkan\nDi Group : " +str(ginfo.name)
+                                       msgs = "ป้องกันเชิญเพื่อนด้วยลิ้ง\n กลุ่ม : " +str(ginfo.name)
                                   aditmadzs.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
                               elif spl == 'off':
                                     if msg.to in protectqr:
                                          protectqr.remove(msg.to)
                                          ginfo = aditmadzs.getGroup(msg.to)
-                                         msgs = "Protect url dinonaktifkan\nDi Group : " +str(ginfo.name)
+                                         msgs = "ปิดป้องกันเชิญเพื่อนด้วยลิ้ง\n กลุ่ม : " +str(ginfo.name)
                                     else:
                                          msgs = "Protect url sudah tidak aktif"
-                                    aditmadzs.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
+                                    aditmadzs.sendMessage(msg.to, "「Bot => Ben」\n" + msgs)
 
-                        elif ' ' in msg.text:
-                           if sender in admin or sender in owner or sender in creator:
+               elif 'กันลบ ' in msg.text and sender in admin or sender in owner or sender in creator:
                               spl = msg.text.replace('กันลบ ','')
                               if spl == 'on':
                                   if msg.to in protectkick:
@@ -1687,18 +1696,18 @@ def bot(op):
                                   else:
                                        protectkick.append(msg.to)
                                        ginfo = aditmadzs.getGroup(msg.to)
-                                       msgs = "Protect kick diaktifkan\nDi Group : " +str(ginfo.name)
-                                  aditmadzs.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
+                                       msgs = "ป้องกันลบสมาชิก\nกลุ่ม : " +str(ginfo.name)
+                                  aditmadzs.sendMessage(msg.to, "「Bot => Ben 」\n" + msgs)
                               elif spl == 'off':
                                     if msg.to in protectkick:
                                          protectkick.remove(msg.to)
                                          ginfo = aditmadzs.getGroup(msg.to)
-                                         msgs = "Protect kick dinonaktifkan\nDi Group : " +str(ginfo.name)
+                                         msgs = "ป้องกันลบสมาชิก\n กลุ่ม : " +str(ginfo.name)
                                     else:
                                          msgs = "Protect kick sudah tidak aktif"
-                                    aditmadzs.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
+                                    aditmadzs.sendMessage(msg.to, "「Ben by Bot」\n" + msgs)
 
-                        elif 'กันเข้า ' in msg.text:
+               elif 'กันเข้า ' in msg.text:
                            if sender in admin or sender in owner or sender in creator:
                               spl = msg.text.replace('กันเข้า ','')
                               if spl == 'on':
@@ -1707,59 +1716,56 @@ def bot(op):
                                   else:
                                        protectjoin.append(msg.to)
                                        ginfo = aditmadzs.getGroup(msg.to)
-                                       msgs = "Protect join diaktifkan\nDi Group : " +str(ginfo.name)
-                                  aditmadzs.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
+                                       msgs = "ป้องกันคนภายนอกเข้ากลุ่มแล้ว\nกลุ่ม : " +str(ginfo.name)
+                                  aditmadzs.sendMessage(msg.to, "「Bot => Ben」\n" + msgs)
                               elif spl == 'off':
                                     if msg.to in protectjoin:
                                          protectjoin.remove(msg.to)
                                          ginfo = aditmadzs.getGroup(msg.to)
-                                         msgs = "Protect join dinonaktifkan\nDi Group : " +str(ginfo.name)
+                                         msgs = "ปิดป้องกัน => คนนอกเข้า => \n กลุ่ม : " +str(ginfo.name)
                                     else:
                                          msgs = "Protect join sudah tidak aktif"
-                                    aditmadzs.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
+                                    aditmadzs.sendMessage(msg.to, "「Bot => Ben」\n" + msgs)
 
-                        elif 'Protectcancel ' in msg.text:
-                           if sender in admin or sender in owner or sender in creator:
-                              spl = msg.text.replace('Protectcancel ','')
+               elif 'กันยก ' in msg.text and sender in admin or sender in owner or sender in creator:
+                              spl = msg.text.replace('กันยก ','')
                               if spl == 'on':
                                   if msg.to in protectcancel:
                                        msgs = "Protect cancel sudah aktif"
                                   else:
                                        protectcancel.append(msg.to)
                                        ginfo = aditmadzs.getGroup(msg.to)
-                                       msgs = "Protect cancel diaktifkan\nDi Group : " +str(ginfo.name)
-                                  aditmadzs.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
+                                       msgs = "ป้องกัน => ยกเลิกเชิญ =>\n กลุ่ม : " +str(ginfo.name)
+                                  aditmadzs.sendMessage(msg.to, "「Bot => Ben」\n" + msgs)
                               elif spl == 'off':
                                     if msg.to in protectcancel:
                                          protectcancel.remove(msg.to)
                                          ginfo = aditmadzs.getGroup(msg.to)
-                                         msgs = "Protect cancel dinonaktifkan\nDi Group : " +str(ginfo.name)
+                                         msgs = "ปิดป้องกัน => ยกเลิก\n กลุ่ม : " +str(ginfo.name)
                                     else:
                                          msgs = "Protect cancel sudah tidak aktif"
-                                    aditmadzs.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
+                                    aditmadzs.sendMessage(msg.to, "「ระบบป้องกันกลุ่ม」\n" + msgs)
                                     
-                        elif 'Protectinvite ' in msg.text:
-                           if sender in admin or sender in owner or sender in creator:
-                              spl = msg.text.replace('Protectinvite ','')
+               elif 'กันเชิญ ' in msg.text and sender in admin or sender in owner or sender in creator:
+                              spl = msg.text.replace('กันเชิญ ','')
                               if spl == 'on':
                                   if msg.to in protectinvite:
                                        msgs = "Protect invite sudah aktif"
                                   else:
                                        protectinvite.append(msg.to)
                                        ginfo = aditmadzs.getGroup(msg.to)
-                                       msgs = "Protect invite diaktifkan\nDi Group : " +str(ginfo.name)
-                                  aditmadzs.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
+                                       msgs = "ป้องกัน => เชิญ \n กลุ่ม : " +str(ginfo.name)
+                                  aditmadzs.sendMessage(msg.to, "「Ben => Bot」\n" + msgs)
                               elif spl == 'off':
                                     if msg.to in protectinvite:
                                          protectinvite.remove(msg.to)
                                          ginfo = aditmadzs.getGroup(msg.to)
-                                         msgs = "Protect invite dinonaktifkan\nDi Group : " +str(ginfo.name)
+                                         msgs = "ปิดป้องกัน => เชิญ \n กลุ่ม : " +str(ginfo.name)
                                     else:
                                          msgs = "Protect invite sudah tidak aktif"
-                                    aditmadzs.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)                                                                      
+                                    aditmadzs.sendMessage(msg.to, "「Bot => Ben」\n" + msgs)                                                                      
 
-                        elif 'กันหมด ' in msg.text:
-                           if sender in admin or sender in owner or sender in creator:
+               elif 'กันหมด ' in msg.text and sender in admin:
                               spl = msg.text.replace('กันหมด ','')
                               if spl == 'on':
                                   if msg.to in protectqr:
@@ -1780,12 +1786,12 @@ def bot(op):
                                       protectjoin.append(msg.to)
                                   if msg.to in protectcancel:
                                       ginfo = aditmadzs.getGroup(msg.to)
-                                      msgs = "เปิดป้องกันทั้งหมด \nกลุ่ม : " +str(ginfo.name)
+                                      msgs = "เปิดป้องกัน => ทั้งหมด \n กลุ่ม : " +str(ginfo.name)
                                   else:
                                       protectcancel.append(msg.to)
                                       ginfo = aditmadzs.getGroup(msg.to)
-                                      msgs = "เปิดใช้งานแล้ว\nDi Group : " +str(ginfo.name)
-                                  aditmadzs.sendMessage(msg.to, "「Diaktifkan」\n" + msgs)
+                                      msgs = "เปิดใช้งานแล้ว\n กลุ่ม : " +str(ginfo.name)
+                                  aditmadzs.sendMessage(msg.to, "「Bot => Ben」\n" + msgs)
                               elif spl == 'off':
                                     if msg.to in protectqr:
                                          protectqr.remove(msg.to)
@@ -1806,15 +1812,15 @@ def bot(op):
                                     if msg.to in protectcancel:
                                          protectcancel.remove(msg.to)
                                          ginfo = aditmadzs.getGroup(msg.to)
-                                         msgs = "Berhasil menonaktifkan semua protect\nDi Group : " +str(ginfo.name)
+                                         msgs = " ปิดป้องกัน => ทั้งหมด \n กลุ่ม : " +str(ginfo.name)
                                     else:
                                          ginfo = aditmadzs.getGroup(msg.to)
-                                         msgs = "Semua protect sudah off\nDi Group : " +str(ginfo.name)
-                                    aditmadzs.sendMessage(msg.to, "「Dinonaktifkan」\n" + msgs)
+                                         msgs = "ยังไม่ได้เปิดป้องกัน \n กลุ่ม : " +str(ginfo.name)
+                                    aditmadzs.sendMessage(msg.to, "「Bot => Ben」\n" + msgs)
 
 #===========KICKOUT============#
 
-                        elif ("เตะ " in msg.text):
+               elif ("เตะ " in msg.text):
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                key = eval(msg.contentMetadata["MENTION"])
@@ -1830,9 +1836,9 @@ def bot(op):
                                            pass
 
 #===========ADMIN ADD============#
-                        elif ("Adminadd " in msg.text):
+               elif ("เพิ่มแอดมิน " in msg.text):
                           if wait["selfbot"] == True:
-                            if msg._from in creator:
+                            if sender in creator or sender in owner:
                                key = eval(msg.contentMetadata["MENTION"])
                                key["MENTIONEES"][0]["M"]
                                targets = []
@@ -1843,11 +1849,20 @@ def bot(op):
                                            admin[target] = True
                                            f=codecs.open('admin.json','w','utf-8')
                                            json.dump(admin, f, sort_keys=True, indent=4,ensure_ascii=False)                                            
-                                           aditmadzs.sendMessage(msg.to,"Berhasil menambahkan admin")
+                                           aditmadzs.sendMessage(msg.to,"เพิ่มแอดมินเรียบร้อย")
                                        except:
                                            pass
-
-                        elif (" เพิ่มสต๊าฟ" in msg.text):
+               
+               
+               elif cmd.startswith("b: "):
+                          if wait["selfbot"] == True:
+                            if sender in admin or sender in owner or sender in creator:
+                               sep = text.split(" ")
+                               pesan = text.replace(sep[0] + " ","") 
+                               print (pesan)
+                               
+                               
+               elif ("เพิ่มสต๊าฟ " in msg.text):
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                key = eval(msg.contentMetadata["MENTION"])
@@ -1858,11 +1873,11 @@ def bot(op):
                                for target in targets:
                                        try:
                                            staff.append(target)
-                                           aditmadzs.sendMessage(msg.to,"Berhasil menambahkan staff")
+                                           aditmadzs.sendMessage(msg.to,"เพิ่มสต๊าฟเรียบร้อย")
                                        except:
                                            pass
 
-                        elif ("เพิ่มบอท " in msg.text):
+               elif ("เพิ่มบอท " in msg.text):
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                key = eval(msg.contentMetadata["MENTION"])
@@ -1873,12 +1888,12 @@ def bot(op):
                                for target in targets:
                                        try:
                                            Bots.append(target)
-                                           aditmadzs.sendMessage(msg.to,"Berhasil menambahkan bot")
+                                           aditmadzs.sendMessage(msg.to,"เพิ่มบอทเรียบร้อย")
                                        except:
                                            pass
 
-                        elif ("ลบแอดมิน " in msg.text):
-                            if msg._from in creator:
+               elif ("ลบแอดมิน " in msg.text):
+                            if sender in creator:
                                key = eval(msg.contentMetadata["MENTION"])
                                key["MENTIONEES"][0]["M"]
                                targets = []
@@ -1889,11 +1904,11 @@ def bot(op):
                                            del admin[target]
                                            f=codecs.open('admin.json','w','utf-8')
                                            json.dump(admin, f, sort_keys=True, indent=4,ensure_ascii=False)                                            
-                                           aditmadzs.sendMessage(msg.to,"Berhasil menghapus admin")
+                                           aditmadzs.sendMessage(msg.to,"ลบแอดมินเรียบร้อย")
                                        except:
                                            pass
 
-                        elif ("ลบสต๊าฟ " in msg.text):
+               elif ("ลบสต๊าฟ " in msg.text):
                             if sender in admin or sender in owner or sender in creator:
                                key = eval(msg.contentMetadata["MENTION"])
                                key["MENTIONEES"][0]["M"]
@@ -1904,14 +1919,13 @@ def bot(op):
                                    if target not in Aditmadzs:
                                        try:
                                            staff.remove(target)
-                                           aditmadzs.sendMessage(msg.to,"Berhasil menghapus admin")
+                                           aditmadzs.sendMessage(msg.to,"ลบสต๊าฟเรียบร้อย")
                                        except:
                                            pass
 
                         
 
-                        elif cmd == "รีเฟรช" or text.lower() == 'รีเฟรช':
-                            if sender in admin or sender in owner or sender in creator:
+               elif cmd == "รีเฟรช" or text.lower() == 'รีเฟรช' and sender in admin or sender in owner or sender in creator:
                                 wait["addadmin"] = False
                                 wait["delladmin"] = False
                                 wait["addstaff"] = False
@@ -1922,21 +1936,21 @@ def bot(op):
                                 wait["dblacklist"] = False
                                 wait["Talkwblacklist"] = False
                                 wait["Talkdblacklist"] = False
-                                aditmadzs.sendMessage(msg.to,"Berhasil di Refresh...")
+                                aditmadzs.sendMessage(msg.to,"รีเฟรชเรียบร้อย")
 
-                        elif cmd == "คอนแทคแอดมิน" or text.lower() == 'คอนแทคแอดมิน':
+               elif cmd == "คอนแทคแอดมิน" or text.lower() == 'คอนแทคแอดมิน':
                                 ma = ""
                                 for i in admin:
                                     ma = ki.getContact(i)
                                     ki.sendMessage(msg.to, None, contentMetadata={'mid': i}, contentType=13)
 
-                        elif cmd == "คอนแทคสต๊าฟ" or text.lower() == 'คอนแทคสต๊าฟ':
+               elif cmd == "คอนแทคสต๊าฟ" or text.lower() == 'คอนแทคสต๊าฟ':
                                 ma = ""
                                 for i in staff:
                                     ma = ki.getContact(i)
                                     ki.sendMessage(msg.to, None, contentMetadata={'mid': i}, contentType=13)
 
-                        elif cmd == "คอนแทคบอท" or text.lower() == 'คอนแทคบอท':
+               elif cmd == "คอนแทคบอท" or text.lower() == 'คอนแทคบอท':
                                 ma = ""
                                 for i in Bots:
                                     ma = ki.getContact(i)
@@ -1945,7 +1959,7 @@ def bot(op):
 #=========COMMAND ON OFF=========#
                        
 #======COMMAND BLACKLIST==========#
-                        elif ("แบน " in msg.text):
+               elif ("แบน " in msg.text):
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                key = eval(msg.contentMetadata["MENTION"])
@@ -1960,7 +1974,7 @@ def bot(op):
                                        except:
                                            pass
 
-                        elif ("Unban " in msg.text):
+               elif ("ล้างแบน " in msg.text):
                           if wait["selfbot"] == True:
                             if sender in admin or sender in owner or sender in creator:
                                key = eval(msg.contentMetadata["MENTION"])
@@ -1980,7 +1994,7 @@ def bot(op):
                         
 
 #===========JOIN TICKET============#
-                        elif "/ti/g/" in msg.text.lower():
+               elif "/ti/g/" in msg.text.lower():
                           if wait["selfbot"] == True:
                               if settings["autoJoinTicket"] == True:
                                  link_re = re.compile('(?:line\:\/|line\.me\/R)\/ti\/g\/([a-zA-Z0-9_-]+)?')
