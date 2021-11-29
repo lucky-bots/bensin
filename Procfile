@@ -1,1 +1,1 @@
-web: python bensin.py
+web: python3 /app/bensin.py
