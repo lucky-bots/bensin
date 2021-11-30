@@ -23,9 +23,9 @@
     "dellbots": true,
     "dellstaff": true,
     "detectMention": false,
-    "leave": "",
+    "leave": "sa yo na ra",
     "limit": 1,
-    "mention": "",
+    "mention": "BOT => Ben ",
     "message": "Thanks ",
     "owner": {},
     "selfbot": true,
@@ -34,6 +34,6 @@
     "talkban": false,
     "unsend": false,
     "wblacklist": false,
-    "welcome": "",
+    "welcome": "BEN BY BOT",
     "welcomeOn": true
 }
