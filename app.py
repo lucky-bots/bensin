@@ -1,11 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*- 
-
 import LINEPY
 from LINEPY import *
 from akad.ttypes import *
-#from linedynamicflex import *
-from __MACOSX import *
 from thrift.unverting import *
 from thrift.TMultiplexedProcessor import *
 from thrift.TSerialization import *
